@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar/Navbar";
 import "./globals.css";
-import { Inter, Roboto, Poppins } from "next/font/google";
+import { Inter } from "next/font/google";
 import Footer from "@/components/Footer/Footer";
 import { ThemeProvider } from "@/context/ThemeContext";
 import AuthProvider from "@/components/AuthProvider/AuthProvider";
@@ -14,8 +14,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" suppressHydrationWarning={true}>
+      <body className={inter.className} suppressHydrationWarning={true}>
         <ThemeProvider>
           <AuthProvider>
             <div className="container">
@@ -29,3 +29,6 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+//NextJS Warning: "Extra attributes from the server: data-new-gr-c-s-check-loaded... "
+// just put this code to html and body tag: suppressHydrationWarning={true}
