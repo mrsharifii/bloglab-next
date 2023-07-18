@@ -16,11 +16,15 @@
     gap: 20px;
 }
 
-.logout {
+.button {
     padding: 8px;
     border: none;
     background-color: #138950;
     cursor: pointer;
     color: white;
     border-radius: 3px;
+}
+
+.button:hover {
+    background-color: #21cc7a;
 }

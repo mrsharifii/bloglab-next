@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const Register = () => {
-  const [err, setErr] = useState(false);
+  const [err, setErr] = useState(null);
 
   const router = useRouter();
 
@@ -18,7 +18,7 @@ const Register = () => {
 
     try {
       const res = await fetch("/api/auth/register", {
-        methode: "POST",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
@@ -30,7 +30,7 @@ const Register = () => {
       });
 
       res.status === 201 &&
-        router.push("/dashboard/login?success=Account_has_been_created");
+        router.push("/dashboard/login?success=Account has been created");
     } catch (err) {
       setErr(true);
     }
@@ -59,7 +59,7 @@ const Register = () => {
         />
         <button className={styles.button}>Register</button>
       </form>
-      {err && "Something went wrong!"}
+      {err && console.error(err)}
       <Link href="/dashboard/login">Login with an existing account</Link>
     </div>
   );
